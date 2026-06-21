@@ -1,0 +1,25 @@
+EquipmentUsed,InspectionItem
+Crane,Wire Rope Check
+Crane,Hook Latch
+Crane,Load Chart Visible
+Crane,Boom Structural Check
+Bulldozer,Track Tension
+Bulldozer,Blade Condition
+Bulldozer,Hydraulic Levels
+Bulldozer,Rollover Protection
+Excavator,Bucket Teeth
+Excavator,Swing Bearing
+Excavator,Hydraulic Hoses
+Excavator,Cab Integrity
+Mixer,Drum Rotation
+Mixer,Discharge Chute
+Mixer,Water Meter
+Mixer,Drive Belt
+Forklift,Fork Condition
+Forklift,Mast Movement
+Forklift,Tire Pressure
+Forklift,Horn Function
+Lift,Platform Guardrails
+Lift,Hydraulic Oil Level
+Lift,Emergency Lowering
+Lift,Outrigger Pads
