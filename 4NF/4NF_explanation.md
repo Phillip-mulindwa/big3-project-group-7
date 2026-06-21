@@ -44,17 +44,27 @@ redundant rows that represent no real fact.
 
 ## How did we separate them?
 
-We created two new tables:
+We created three new tables:
+
+equipment_types.csv
+- Columns: EquipmentUsed
+- Primary key: EquipmentUsed
+- One row per distinct equipment type used across all projects
 
 equipment_training.csv
 - Columns: EquipmentUsed, TrainingModule
 - Primary key: (EquipmentUsed, TrainingModule)
+- Foreign key: EquipmentUsed references equipment_types(EquipmentUsed)
 - Each row records one training module required for one equipment type
 
 equipment_inspections.csv
 - Columns: EquipmentUsed, InspectionItem
 - Primary key: (EquipmentUsed, InspectionItem)
+- Foreign key: EquipmentUsed references equipment_types(EquipmentUsed)
 - Each row records one inspection item required for one equipment type
+
+project_equipment.csv also gains a foreign key in this stage:
+- Foreign key: EquipmentUsed references equipment_types(EquipmentUsed)
 
 Each table carries exactly one independent multi-valued fact per equipment
 type, so neither table has a non-trivial MVD.
@@ -64,13 +74,23 @@ supplier_phones, project_workers, worker_skills, worker_certifications,
 project_materials, project_equipment) are carried into 4NF unchanged
 because they were already free of non-trivial MVDs.
 
-## What are the primary keys of the new relationship tables?
+## What are the primary keys of the new tables?
+
+equipment_types:
+  Primary key: EquipmentUsed
 
 equipment_training:
   Primary key: (EquipmentUsed, TrainingModule)
+  Foreign key: EquipmentUsed → equipment_types(EquipmentUsed)
 
 equipment_inspections:
   Primary key: (EquipmentUsed, InspectionItem)
+  Foreign key: EquipmentUsed → equipment_types(EquipmentUsed)
+
+project_equipment:
+  Primary key: (ProjectID, EquipmentUsed)
+  Foreign keys: ProjectID → projects(ProjectID)
+                EquipmentUsed → equipment_types(EquipmentUsed)
 
 ## Why is the final design in 4NF?
 
